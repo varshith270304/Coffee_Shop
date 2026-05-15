@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Urban Grind | Premium Coffee</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 1. CSS VARIABLES & RESET */
+        :root {
+            --primary-color: #3d2b1f;   /* Espresso */
+            --secondary-color: #c6a664; /* Gold/Latte */
+            --bg-light: #fdfaf5;       /* Cream */
+            --text-dark: #2c2c2c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* 2. NAVIGATION (Flexbox) */
+        header {
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* 3. HERO SECTION (Animations & Gradients) */
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(61, 43, 31, 0.7), rgba(61, 43, 31, 0.7)), 
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 10px;
+            animation: fadeInDown 1.2s ease;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cta-btn {
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: 0.4s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* 4. MENU SECTION (CSS Grid) */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 8% 60px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            margin: 15px 0;
+            color: var(--primary-color);
+        }
+
+        .price {
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* 5. TABLE SECTION (Roasting Schedule) */
+        .table-section {
+            padding: 60px 8%;
+            background-color: #fff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--bg-light);
+        }
+
+        /* 6. FORM SECTION */
+        .form-container {
+            padding: 80px 8%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        input, select, textarea {
+            margin-bottom: 15px;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        /* 7. RESPONSIVENESS */
+        @media (max-width: 768px) {
+            header { flex-direction: column; }
+            nav ul { margin-top: 15px; }
+            .hero h1 { font-size: 2.5rem; }
+            .grid-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Nav -->
+    <header>
+        <div class="logo">THE URBAN GRIND</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#menu">Our Coffee</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#club">Coffee Club</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Freshly Roasted, Every Morning</h1>
+        <p style="margin-bottom: 25px;">Experience the finest Arabica beans sourced directly from Ethiopia and Brazil.</p>
+        <a href="#menu" class="cta-btn">View Menu</a>
+    </section>
+
+    <!-- Menu Grid -->
+    <h2 class="section-title" id="menu">Signature Blends</h2>
+    <div class="grid-container">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=1937&auto=format&fit=crop" alt="Espresso">
+            <h3>Midnight Velvet</h3>
+            <p>Dark Roast • Chocolatey • Smooth</p>
+            <p class="price">$18.00</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1974&auto=format&fit=crop" alt="Cappuccino">
+            <h3>Golden Sunrise</h3>
+            <p>Light Roast • Citrusy • Bright</p>
+            <p class="price">$16.50</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=1169&auto=format&fit=crop" alt="Latte">
+            <h3>Rustic Highland</h3>
+            <p>Medium Roast • Nutty • Earthy</p>
+            <p class="price">$17.20</p>
+        </div>
+    </div>
+
+    <!-- Table Section -->
+    <div class="table-section" id="schedule">
+        <h2 class="section-title">Roasting Schedule</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Bean Origin</th>
+                    <th>Roast Type</th>
+                    <th>Availability</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Monday</td>
+                    <td>Ethiopia Yirgacheffe</td>
+                    <td>Light</td>
+                    <td>In Stock</td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td>Colombia Supremo</td>
+                    <td>Medium</td>
+                    <td>Limited</td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td>Sumatra Mandheling</td>
+                    <td>Dark</td>
+                    <td>Coming Soon</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Membership Form -->
+    <div class="form-container" id="club">
+        <h2 class="section-title" style="color:white">Join the Coffee Club</h2>
+        <p style="margin-bottom: 30px;">Get 15% off your first order and weekly brewing tips.</p>
+        <form>
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <select>
+                <option value="">Preferred Roast</option>
+                <option value="light">Light Roast</option>
+                <option value="medium">Medium Roast</option>
+                <option value="dark">Dark Roast</option>
+            </select>
+            <div style="margin-bottom: 15px;">
+                <label><input type="checkbox"> Send me weekly newsletters</label>
+            </div>
+            <button type="submit" class="cta-btn">Sign Me Up</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer style="padding: 40px; text-align: center; background: #222; color: #888;">
+        <p>&copy; 2024 The Urban Grind Roastery. Built for Digital Excellence.</p>
+    </footer>
+
+</body>
+</html>
